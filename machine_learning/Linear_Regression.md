@@ -250,6 +250,27 @@ $$
 
 ---
 
+# Adjusted $R^2$ Score
+
+$$
+R^2_{adj} = 1 - \left( \frac{(1 - R^2)(n - 1)}{n - p - 1} \right)
+$$
+
+- $n$ → number of samples  
+- $p$ → number of features  
+
+## When $R^2$ Fails
+
+- Always **increases (or stays same)** when new features are added  
+- Even if features are **irrelevant (noise)**  
+- Leads to **false model improvement**  
+
+## Why Adjusted $R^2$ Works
+
+- Penalizes unnecessary features  & Increases only if feature **adds real value**
+
+---
+
 # Model Interpretability (Linear Regression)
 
 ## General Model
@@ -791,6 +812,158 @@ layout: two-cols-header
 
 👉 1 epoch = 10 iterations  
 ---
+layout: two-cols-header
+---
+
+# Underfitting vs Overfitting
+
+::left::
+
+## Underfitting (High Bias)
+
+- Model is **too simple**
+- Cannot capture true pattern  
+
+$$
+\hat{y} = w_0 + w_1 x
+$$
+
+- High training error  
+- High test error  
+
+👉 Example:
+- Linear model for quadratic data  
+
+::right::
+## Overfitting (High Variance)
+
+- Model is **too complex**
+- Learns noise instead of pattern  
+
+$$
+\hat{y} = w_0 + w_1 x + w_2 x^2 + \dots + w_n x^n
+$$
+
+- Low training error  
+- High test error  
+
+## Generalization Goal
+
+👉 Balance between:
+
+- Bias ↓  
+- Variance ↓  
+
+---
+layout: default
+---
+
+# Bias–Variance Tradeoff (Bullseye Intuition)
+
+| Case | Bias | Variance | Interpretation |
+|------|------|----------|---------------|
+| 1 | High | Low | Underfitting |
+| 2 | Low | High | Overfitting |
+| 3 | High | High | Worst case |
+| 4 | Low | Low | Ideal |
+
+## Mathematical View
+
+$$
+\text{Error} = \text{Bias}^2 + \text{Variance} + \text{Irreducible Error}
+$$
+
+---
+
+## Intuition
+
+- **High Bias** → predictions far from true value  
+- **High Variance** → predictions fluctuate a lot  
+
+## Goal
+
+👉 Minimize total error, not just one component  
+
+<img src="./images/overfit_underfit.png" style="width:50%; margin-top:20px;margin-left:50px;">
+
+---
+layout: two-cols-header
+---
+
+# Regularization (Controlling Overfitting)
+
+::left::
+
+## L2 Regularization (Ridge)
+
+- Penalizes large weights  
+
+$$
+L = \frac{1}{m} \sum (y - \hat{y})^2 + \lambda \sum w_i^2
+$$
+
+- Shrinks weights smoothly  
+- Keeps all features  
+
+## L1 Regularization (Lasso)
+
+$$
+L = \frac{1}{m} \sum (y - \hat{y})^2 + \lambda \sum |w_i|
+$$
+
+- Produces sparse weights  
+- Performs feature selection  
+
+::right::
+
+## Elastic Net
+
+- Combination of L1 + L2  
+
+$$
+L = \frac{1}{m} \sum (y - \hat{y})^2 + \lambda_1 \sum |w_i| + \lambda_2 \sum w_i^2
+$$
+
+
+## Effect of Regularization
+
+- Reduces variance  
+- Slightly increases bias  
+- Improves generalization  
+
+## Key Insight
+
+👉 Controls model complexity  
+---
+layout: default
+---
+
+# Hyperparameter Tuning
+
+## What are Hyperparameters?
+
+- Not learned from data  
+- Set before training  
+
+## Examples
+
+- Learning rate $\alpha$  
+- Regularization strength $\lambda$  
+- Polynomial degree  
+
+👉 Goal: To find best hyperparameters which are minimizing validation error
+
+## Final Insight
+
+- Model parameters → learned  
+- Hyperparameters → tuned  
+---
+
+<div style="display: flex; justify-content: center;">
+  <img src="/images/Hyper_parameter_tuning_methods.png" style="width:80%; margin-top:20px;">
+</div>
+
+---
 
 # Assumptions
 
@@ -802,55 +975,20 @@ layout: two-cols-header
 - No autocorrelation  
 - Additivity  
 
----
-
-<!-- 📌 IMAGE:
-Assumption plots (your infographic bottom section)
-<img src="./images/assumptions.png" style="width:85%; margin-top:20px;">
--->
+👉 Linear Regression algorithm works properly only if above assumptions are satisfied
 
 ---
 
-# Evaluation Metrics
+<div style="text-align: center; height: 100%; display: flex; justify-content: center; align-items: center;">
 
-- Mean Squared Error (MSE)  
-- Mean Absolute Error (MAE)  
-- Root Mean Squared Error (RMSE)  
-- R-Squared  
-- Adjusted R-Squared  
+  <img src="./images/assumptions.png" style="max-width: 90%; margin: 20px;" />
+
+</div>
 
 ---
 
-# Types + Use Cases
+# Thank You 🙏
 
-## Types
-
-- Simple Linear Regression  
-- Multiple Linear Regression  
-
----
-
-## Applications
-
-- Real Estate → price prediction  
-- Finance → stock forecasting  
-- Agriculture → crop yield  
-- E-commerce → sales prediction  
-
----
-
-# Advantages vs Limitations
-
-## Advantages
-- Simple & interpretable  
-- Fast & efficient  
-- Good baseline model  
-
----
-
-## Limitations
-- Assumes linearity  
-- Sensitive to outliers  
-- Cannot capture complex patterns  
+## Any Questions?
 
 ---
