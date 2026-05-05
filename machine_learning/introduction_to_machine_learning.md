@@ -175,7 +175,7 @@ layout: two-cols-header
 
 <div style="text-align: center; height: 100%; display: flex; justify-content: center; align-items: center;">
 
-  <img src="./images/types_of_learning.png" style="max-width: 80%; margin: 20px;" />
+  <img src="./images/types_of_learning.png" style="max-width: 90%; margin: 20px;" />
 
 </div>
 
