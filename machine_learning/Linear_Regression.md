@@ -105,89 +105,187 @@ layout: two-cols-header
 </div>
 
 ---
+layout: two-cols-header
+---
 
-# Equation + Interpretation
+# Model Evaluation (Linear Regression)
 
-## Linear Equation
+<div style="position: absolute; left: 50%; top: 20%; bottom: 10%; width: 2px; background: #ccc;"></div>
 
+::left::
+## Goal
+- We want predictions to be **as close as possible** to actual values  
 
-::contentReference[oaicite:0]{index=0}
+### Idea
+- Each data point has:
+  - Actual value → $y_i$
+  - Predicted value → $\hat{y}_i$
 
+👉 Goal:
+- Minimize distance between:
+  - Actual point  
+  - Predicted point  
+::right::
 
-### Meaning
-- y → predicted value  
-- x → input  
-- m → slope (change rate)  
-- b → intercept  
+<div style="padding-left: 30px;">
+
+## From Error → Loss Function
+
+- For one data point:
+
+$$
+\text{Error} = y_i - \hat{y}_i
+$$
+
+## Problem
+
+- We have **multiple data points**
+
+👉 So we take **mean of all errors**
+
+$$
+J = \frac{1}{n} \sum_{i=1}^{n} (y_i - \hat{y}_i)
+$$
+
+👉 Goal:
+- Find parameters such that **loss is minimum**
+
+</div>
+---
+layout: two-cols-header
+---
+
+# MAE vs MSE
+
+Since errors can be positive or negative, we use |error| or error² so that all errors contribute equally
+
+::left::
+
+## Mean Absolute Error (MAE)
+
+$$
+\text{MAE} = \frac{1}{n} \sum |y_i - \hat{y}_i|
+$$
+
+- Uses absolute difference  
+- All errors treated equally  
+
+## Properties
+- Robust to outliers  
+- Linear penalty  
+
+::right::
+
+## Mean Squared Error (MSE)
+
+$$
+\text{MSE} = \frac{1}{n} \sum (y_i - \hat{y}_i)^2
+$$
+
+- Squares the error  
+- Larger errors penalized more  
+
+## Properties
+- Sensitive to outliers  
+- Smooth for optimization  
+
+---
+layout: two-cols
+---
+
+# Issues with MAE & MSE
+
+<div style="position: absolute; left: 50%; top: 10%; bottom: 10%; width: 2px; background: #ccc;"></div>
+
+::left::
+
+## MAE Issues
+- Not differentiable at 0  
+- Harder for optimization  
+
+## MSE Issues
+- Sensitive to outliers  
+- Large errors dominate  
+
+## Need Better Metric
+
+- Want measure of:
+  - How well model explains data  
+  - Relative performance  
+
+👉 Leads to **R² Score**
+
+::right::
+<div style="padding-left: 30px;">
+
+# R² Score (Coefficient of Determination)
+
+- Measures how well model explains variance  
+
+## Formula
+
+$$
+R^2 = 1 - \frac{SS_{res}}{SS_{tot}}
+$$
+
+## Components
+
+- Residual Sum of Squares:
+
+$$
+SS_{res} = \sum (y_i - \hat{y}_i)^2
+$$
+
+- Total Sum of Squares:
+
+$$
+SS_{tot} = \sum (y_i - \bar{y})^2
+$$
+
+</div>
+---
+
+---
+layout: two-cols
+---
+
+# Understanding R² Score
+
+::left::
+
+## Case 1: $$ R^2 = 1 $$
+- Perfect prediction  
+- Model explains all variance  
 
 ---
 
-## Interpretation
+## Case 2: $$ R^2 = 0 $$
+- Same as predicting mean  
+- No learning  
 
-- Slope (m):
-  - Change in Y for 1 unit change in X  
+::right::
 
-- Intercept (b):
-  - Value of Y when X = 0  
-
----
-
-# Residuals + Error
-
-## Residual
-
-:contentReference[oaicite:1]{index=1}
-
-- Difference between:
-  - Actual value  
-  - Predicted value  
+## Case 3: $$ R^2 < 0 $$
+- Worse than baseline  
+- Poor model  
 
 ---
 
-## Least Squares
+## Range
 
-:contentReference[oaicite:2]{index=2}
-
-- Minimize squared error  
-- Ensures best-fit line  
-
----
-
-<!-- 📌 IMAGE:
-Residual lines from points to line
-<img src="./images/residuals.png" style="width:75%; margin-top:20px;">
--->
+$$
+-\infty < R^2 \leq 1
+$$
 
 ---
 
-# Hypothesis Function
+# Summary
 
-## Simple Linear Regression
-
-:contentReference[oaicite:3]{index=3}
-
----
-
-## Multiple Linear Regression
-
-:contentReference[oaicite:4]{index=4}
-
----
-
-### Meaning
-- β₀ → intercept  
-- β₁, β₂ → feature importance  
-
----
-
-# Cost Function + Optimization
-
-## Cost Function (MSE)
-
-:contentReference[oaicite:5]{index=5}
-
-- Measures prediction error  
-- Goal → minimize  
+- Goal → minimize prediction error  
+- Loss → average error  
+- MAE → robust  
+- MSE → penalizes large errors  
+- R² → explains model performance  
 
 ---
 
