@@ -112,149 +112,150 @@ end
 </div>
 </div>
 ---
-
-# Types of Learning (Overview)
-
-- Supervised Learning  
-- Unsupervised Learning  
-- Reinforcement Learning  
-
+layout: two-cols-header
 ---
 
-# Supervised Learning
+# Types of Learning
 
+::left::
+
+## Supervised Learning
 - Output label (Y) is present  
-- Model learns input → output mapping  
+- Learns input → output mapping  
 
 ### Example
 - House price prediction  
 - Fraud detection  
 
----
+## Reinforcement Learning
+- Agent interacts with environment  
+- Learns via reward & penalty
+- Key components - State, Action, Reward
 
-# Unsupervised Learning
+### Example
+- Autonomous Driving 
+- Chess Engine
 
+::right::
+
+## Unsupervised Learning
 - No output labels  
-- Finds hidden patterns in data  
+- Finds hidden patterns  
 
 ### Example
 - Customer segmentation  
 - Document grouping  
-
+---
+layout: two-cols-header
 ---
 
-# Reinforcement Learning
+# Types of Learning (Advanced)
 
-- Agent interacts with environment  
-- Learns through reward and penalty  
+::left::
 
-### Key Components
-- State  
-- Action  
-- Reward  
+## Semi-Supervised Learning
+- Few labeled + many unlabeled  
+- Improves learning with less labeling  
+
+### Examples
+- Amazon Product Segmentation: few labeled scans + many unlabeled scans  
+- Email classification with limited labeled data  
+
+::right::
+
+## Self-Supervised Learning
+- Generates labels from data  
+- Learns representations automatically  
+
+### Examples
+- Predict missing words in a sentence (LLMs)  
+- Masked image patches in vision models  
 
 ---
-
-# Types of Tasks
-
-- Classification  
-- Regression  
-- Clustering  
-- Recommendation  
-- Forecasting  
-
+layout: two-cols-header
 ---
 
-# Classification
+# Types of Tasks (Part 1)
 
+::left::
+
+## Classification
 - Predict category labels  
 
 ### Examples
 - Churn prediction  
 - Fraud detection  
 
----
-
-# Regression
-
+## Regression
 - Predict continuous values  
 
 ### Examples
 - Credit score prediction  
 - House price prediction  
 
----
+::right::
 
-# Clustering
-
+## Clustering
 - Group similar data points  
 
 ### Examples
 - Customer segmentation  
 - Document grouping  
 
----
-
-# Recommendation
-
+## Recommendation
 - Suggest relevant items  
 
 ### Examples
-- Netflix movie recommendations  
-- E-commerce product suggestions  
+- Netflix recommendations  
+- E-commerce suggestions  
 
 ---
+layout: two-cols-header
+---
 
-# Forecasting
+# Types of Tasks (Part 2)
 
+::left::
+
+## Forecasting
 - Predict future values  
 
 ### Examples
 - Stock price prediction  
 - Sales forecasting  
 
+::right::
+
+## Summary
+- Classification → categories  
+- Regression → continuous values  
+- Clustering → grouping  
+- Recommendation → suggestions  
+- Forecasting → future prediction  
+
+---
+layout: two-cols-header
 ---
 
 # ML Definition (ETP Framework)
 
 > Machine learning is the study of algorithms that improve their performance (P) at a task (T) with experience (E).
 
----
-
-# Components of ETP
-
-## Task (T)
-- Problem to solve  
-
-## Experience (E)
-- Training data  
-
-## Performance (P)
-- Evaluation metric  
-
----
+::left::
+<div style="height: 30px;"></div>
 
 # Example: Stock Price Prediction
 
 - T: Predict stock price  
 - E: Historical data  
 - P: Mean Squared Error  
-
----
+  
+::right::
+<div style="height: 30px;"></div>
 
 # Example: Customer Segmentation
 
 - T: Segment customers  
 - E: Transactional data  
 - P: Cluster quality (intra vs inter distance)  
-
----
-
-# Summary
-
-- ML learns from data  
-- Different learning types exist  
-- Tasks vary based on problem  
-- Performance improves with experience  
-
 ---
